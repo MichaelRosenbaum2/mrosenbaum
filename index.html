@@ -3,21 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS-->
+    <title>Michael Rosenbaum - Full-Stack Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li><a href="#"> Home</a></li>
-            <li><a href="#"> About</a></li>
-            <li><a href="#"> Projects</a></li>
-            <li><a href="#"> Contact</a></li>
-            <li><a href="#"> Hobbies</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
-    <h1>Michael Rosenbaum</h1>
-    <p>This is a test page hosted on GitHub Pages.</p>
-    <img src="file.png" alt="Professional Picture" class="profile-pic">
+    
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <h1>Michael Rosenbaum</h1>
+        <p>Aspiring Full-Stack Developer | Passionate About Learning and Building Dynamic Web Applications</p>
+    </header>
+    
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hi! I'm Michael Rosenbaum, an aspiring full-stack developer with a strong foundation in Java, SQL, and web development. 
+            I'm currently sharpening my skills in back-end and front-end technologies through immersive projects and hands-on experience.
+        </p>
+        <img src="file.png" alt="Michael Rosenbaum" class="profile-pic">
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-cards">
+            <div class="project-card">
+                <h3>Personal Portfolio Website</h3>
+                <p>A responsive portfolio site showcasing my skills, projects, and contact information.</p>
+            </div>
+            <div class="project-card">
+                <h3>Capstone Vending Machine</h3>
+                <p>A CLI-based vending machine simulation built in Java and SQL.</p>
+            </div>
+            <div class="project-card">
+                <h3>More Projects Coming Soon!</h3>
+                <p>Stay tuned for exciting projects currently in development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Michael Rosenbaum | Let's Connect:</p>
+        <div class="social-icons">
+            <a href="https://github.com/michaelrosenbaum2" target="_blank"><img src="github-icon.png" alt="GitHub"></a>
+            <a href="https://linkedin.com/in/placeholder" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="mailto:michaelrosenbaum2@example.com"><img src="email-icon.png" alt="Email"></a>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle">Toggle Dark Mode</button>
+
+    <script>
+        const toggle = document.getElementById('dark-mode-toggle');
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>

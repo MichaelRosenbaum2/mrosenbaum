@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Michael Rosenbaum</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+
+    <!-- Contact Form -->
+    <div class="container">
+        <h1>Contact Me</h1>
+        <p>If you have any questions or would like to get in touch, use the form below. I'll respond as soon as possible.</p>
+        <form id="contact-form" class="contact-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="_replyto" placeholder="Enter your email" required>
+            
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" placeholder="Enter your message" rows="5" required></textarea>
+            
+            <button type="submit">Send Message</button>
+            <p id="form-response" style="display: none;"></p>
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2025 Michael Rosenbaum | Let's Connect:</p>
+        <div class="social-icons">
+            <a href="https://github.com/michaelrosenbaum2" target="_blank"><img src="github-icon.png" alt="GitHub"></a>
+            <a href="https://linkedin.com/in/placeholder" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for AJAX Form Submission -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from reloading the page
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const responseMessage = document.getElementById('form-response');
+
+            // Send form data via AJAX
+            fetch('https://formspree.io/f/mlddabqo', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    responseMessage.style.display = 'block';
+                    responseMessage.style.color = 'green';
+                    responseMessage.textContent = 'Your message has been sent successfully!';
+                    form.reset(); // Clear the form
+                } else {
+                    // Handle errors
+                    responseMessage.style.display = 'block';
+                    responseMessage.style.color = 'red';
+                    responseMessage.textContent = 'Oops! Something went wrong. Please try again.';
+                }
+            })
+            .catch(error => {
+                // Handle network errors
+                responseMessage.style.display = 'block';
+                responseMessage.style.color = 'red';
+                responseMessage.textContent = 'Oops! Something went wrong. Please try again.';
+            });
+        });
+    </script>
+</body>
+</html>
