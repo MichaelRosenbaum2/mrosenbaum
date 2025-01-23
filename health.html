@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Weight Calculator -->
+    <div class="container">
+        <h1>Weight Calculator</h1>
+        <p>Enter your weight in pounds to calculate your hydration and protein goals.</p>
+        <form id="weight-form">
+            <label for="weight">Your Weight (lbs):</label>
+            <input type="number" id="weight" name="weight" placeholder="Enter your weight in pounds" required>
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('weight-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+            
+            const weightInPounds = parseFloat(document.getElementById('weight').value);
+            const resultDiv = document.getElementById('result');
+
+            if (!isNaN(weightInPounds) && weightInPounds > 0) {
+                // Andy Galpin Equation: ounces of water every 15–20 minutes
+                const galpinOunces = (weightInPounds / 30).toFixed(2);
+
+                // Convert pounds to kilograms (1 lb = 0.453592 kg)
+                const weightInKg = (weightInPounds * 0.453592).toFixed(2);
+
+                // Protein Goal Range (1.6g to 2.0g per kg of body weight)
+                const proteinMin = (weightInKg * 1.6).toFixed(2);
+                const proteinMax = (weightInKg * 2.0).toFixed(2);
+
+                // Display results
+                resultDiv.innerHTML = `
+                    <h2>Results:</h2>
+                    <p><strong>Your weight in kilograms:</strong> ${weightInKg} kg</p>
+                    <p><strong>Andy Galpin Equation:</strong> Drink ${galpinOunces} ounces of water every 15–20 minutes during exercise</p>
+                    <p><strong>Protein Goal Range:</strong> ${proteinMin}g to ${proteinMax}g of protein per day</p>
+                `;
+            } else {
+                resultDiv.innerHTML = `<p style="color: red;">Please enter a valid weight.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
